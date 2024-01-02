@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello React</title>
+</head>
+<body>
+    <h1>Hello Varsha Above root</h1>
+    <div id="root">
+        <!-- root.render will replace whatever inside parent div having id root -->
+        <!-- First of all our browser reads html so it will show Varsha is here! means whatever inside parent div
+        and as soon as it will read script tags and it loads react then loads reactdom then will read App.js
+        and when it reaches root.render() it will be replaced by react elements and not appended -->
+        <h1>Varsha is here!</h1>
+    </div>
+    <h1>Hello Varsha below root</h1>
+
+    <!-- order of the following script tags does matter
+    we have to import React before using it inside App.js -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+   <script src="./App.js">
+   </script>
+</body>
+</html>

@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hello React</title>
+    <link rel="stylesheet" href="index.css">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> -->
 </head>
 <body>
-    <h1>Hello Varsha Above root</h1>
+    <!-- <h1>Hello Varsha Above root</h1> -->
     <div id="root">
         <!-- root.render will replace whatever inside parent div having id root -->
         <!-- First of all our browser reads html so it will show Varsha is here! means whatever inside parent div
@@ -14,13 +16,14 @@
         and when it reaches root.render() it will be replaced by react elements and not appended -->
         <h1>Varsha is here!</h1>
     </div>
-    <h1>Hello Varsha below root</h1>
+    <!-- <h1>Hello Varsha below root</h1> -->
 
     <!-- order of the following script tags does matter
     we have to import React before using it inside App.js -->
-    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-   <script src="./App.js">
+    <!-- <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script> -->
+   <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script> -->
+   <script type="module" src="./src/App.js">
    </script>
 </body>
 </html>

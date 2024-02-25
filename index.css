@@ -76,3 +76,9 @@ scrollbar-width: none;
     padding: 0 20px;
     margin: 10px;
 }
+
+.filter{
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+}

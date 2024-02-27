@@ -1,2 +1,3 @@
 export const LOGO_URL = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShhxRajHH4ZXixPGu-uu7bIz8aU8F-3DnZG0XpLbDOd4Kzhc0xCG8EpOLSY0MKyv-qhiY&usqp=CAU";
 export const DOM_URL = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
+export const RES_URL = "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9351929&lng=77.62448069999999&restaurantId=";

@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 // import restaurants from "../utils/restaurants";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
+import {Link} from "react-router-dom";
 
 const Body = () => {
     const [list, setList] = useState([]);
@@ -38,8 +39,8 @@ const Body = () => {
                     <input type="text" ref={refVariable}/>
                     {/* <input type="text" ref={inputRef} value={searchText} onChange={(e)=>{setSearchText(e.target.value); console.log(searchText)}}/> */}
                     <button onClick={()=>{
-                        console.log(ref.current.value);
-                        setFilteredList(list.filter((restaurant) => restaurant.info.name.toLowerCase().includes(ref.current.value.toLowerCase())));
+                        console.log(refVariable.current.value);
+                        setFilteredList(list.filter((restaurant) => restaurant.info.name.toLowerCase().includes(refVariable.current.value.toLowerCase())));
                     }}>search</button>
                 </div>
                 <button className="filter-btn" onClick={()=>{
@@ -49,7 +50,11 @@ const Body = () => {
                 }}>Top Rated Restaurants</button>
             </div>
             <div className="res-container">
-                {filteredList?.map(restaurant => <RestaurantCard key={restaurant.info.id} restaurant={restaurant}/>)}
+                {filteredList?.map(restaurant => 
+                <Link className= "linkStyle" key={restaurant.info.id} to={"/restaurants/" + restaurant.info.id}>
+                    <RestaurantCard restaurant={restaurant}/>
+                </Link>
+                )}
             </div>
             <div className="Hello">
                 <img alt="res-logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShhxRajHH4ZXixPGu-uu7bIz8aU8F-3DnZG0XpLbDOd4Kzhc0xCG8EpOLSY0MKyv-qhiY&usqp=CAU"/>

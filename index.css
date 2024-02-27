@@ -35,6 +35,10 @@ scrollbar-width: none;
     background-color: #f0f0f0;
 }
 
+.linkStyle{
+    text-decoration: none;
+}
+
 .res-container{
     display: flex;
     flex-wrap: wrap;

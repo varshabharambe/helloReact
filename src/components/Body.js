@@ -8,8 +8,10 @@ const Body = () => {
     const [list, setList] = useState([]);
     const [filteredList, setFilteredList] = useState([]);
     const [searchText,setSearchText] = useState("");
+    const [count,setCount] = useState(0);
 
     const refVariable = useRef(null);
+    const refCount = useRef(0);
 
     useEffect(()=>{
         console.log("callback called");
@@ -42,6 +44,7 @@ const Body = () => {
                         console.log(refVariable.current.value);
                         setFilteredList(list.filter((restaurant) => restaurant.info.name.toLowerCase().includes(refVariable.current.value.toLowerCase())));
                     }}>search</button>
+                    {/* <div><button onClick={()=> refCount.current++}>Count</button> : <h1 ref={refCount}>{refCount}</h1></div> */}
                 </div>
                 <button className="filter-btn" onClick={()=>{
                     let filtered = list.filter((val) => val.info.avgRating>4)

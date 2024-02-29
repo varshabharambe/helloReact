@@ -3,22 +3,23 @@ import { useEffect, useState, useRef } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import {Link} from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
     const [list, setList] = useState([]);
     const [filteredList, setFilteredList] = useState([]);
-    const [searchText,setSearchText] = useState("");
-    const [count,setCount] = useState(0);
+    // const [searchText,setSearchText] = useState("");
+    // const [count,setCount] = useState(0);
 
     const refVariable = useRef(null);
-    const refCount = useRef(0);
+    // const refCount = useRef(0);
 
     useEffect(()=>{
-        console.log("callback called");
+        // console.log("callback called");
         fetchData();
     },[]);
 
-    console.log("body rendered");
+    // console.log("body rendered");
     // console.log("list",list);
 
     const fetchData = async () => {
@@ -33,6 +34,11 @@ const Body = () => {
     // if(list.length === 0){
     //     return <Shimmer/>;
     // }
+
+    const onlineStatus= useOnlineStatus();
+    if(!onlineStatus){
+        return <h1>Offline...!</h1>
+    }
 
     return (list.length === 0) ? <Shimmer/> : (
         <div className="body">

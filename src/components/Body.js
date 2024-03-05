@@ -8,11 +8,8 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 const Body = () => {
     const [list, setList] = useState([]);
     const [filteredList, setFilteredList] = useState([]);
-    // const [searchText,setSearchText] = useState("");
-    // const [count,setCount] = useState(0);
 
     const refVariable = useRef(null);
-    // const refCount = useRef(0);
 
     useEffect(()=>{
         // console.log("callback called");

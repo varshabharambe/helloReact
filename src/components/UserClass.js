@@ -10,10 +10,10 @@ class UserClass extends React.Component{
                 // login:"",
             },
         }
-        console.log("user constructor");
+        // console.log("user constructor");
     }
     async componentDidMount(){
-        console.log("user did mount");
+        // console.log("user did mount");
         const data = await fetch("https://api.github.com/users/proNeel02");
         const json =await data.json();
         this.setState({
@@ -21,10 +21,10 @@ class UserClass extends React.Component{
         })
     }
     componentDidUpdate(){
-        console.log("user componentDidUpdate");
+        // console.log("user componentDidUpdate");
     }
 render(){
-    console.log("user Render");
+    // console.log("user Render");
     const {name,location,login,avatar_url} = this.state.userInfo;
     return(
         <div>

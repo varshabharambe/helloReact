@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 // import restaurants from "../utils/restaurants";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, {withPromotedLabel} from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
@@ -11,28 +11,29 @@ const Body = () => {
 
   const refVariable = useRef(null);
 
+  const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
   useEffect(() => {
     // console.log("callback called");
     fetchData();
   }, []);
 
-  // console.log("body rendered");
-  // console.log("list",list);
-
   const fetchData = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
-    const jsonData = await data.json();
-    // console.log("data", jsonData);
-    setList(
-      jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants
-    );
-    setFilteredList(
-      jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants
-    );
+    try{
+      const data = await fetch(
+        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      );
+      const jsonData = await data.json();
+      setList(
+        jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants
+      );
+      setFilteredList(
+        jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants
+      );
+    }catch(err){
+      console.log("err", err);
+    }
   };
 
   // conditional rendering
@@ -59,7 +60,6 @@ const Body = () => {
           <button
             className="bg-green-200 px-4 py-2 m-4 rounded-lg"
             onClick={() => {
-              console.log(refVariable.current.value);
               setFilteredList(
                 list.filter((restaurant) =>
                   restaurant.info.name
@@ -77,7 +77,6 @@ const Body = () => {
             className="bg-gray-200 px-4 py-2 m-4 rounded-lg"
             onClick={() => {
               let filtered = list.filter((val) => val.info.avgRating > 4);
-              console.log("filtered", filtered);
               setList((x) => x.filter((val) => val.info.avgRating > 4));
             }}
           >
@@ -92,7 +91,9 @@ const Body = () => {
             key={restaurant.info.id}
             to={"/restaurants/" + restaurant.info.id}
           >
-            <RestaurantCard restaurant={restaurant} />
+            {
+              restaurant.info.avgRating > 4 ? (<RestaurantCardPromoted restaurant={restaurant} />) : (<RestaurantCard restaurant={restaurant} />)
+            }
           </Link>
         ))}
       </div>
